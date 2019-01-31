@@ -1,6 +1,6 @@
 # Trojex
-Computer Organisaition Class
-mounika kandagadda
+Computer Organization and Programming 
+Mounika Kandagadda
 Ritesh Gautam 
 Samuel Austin Brown III
-Chenge liu
+Chenge Liu
