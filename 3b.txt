@@ -1,0 +1,86 @@
+we sttarted the program by coipying an pasting the code in nano 
+and compiling but we ran into a "undefined reference to `sin'" error
+so we google the error and we saw on stack overflow that we have to add the "-lm" flag inorder to include the math library in our excutable. It work after
+
+
+
+file:///home/pi/sin%20error%20include%20-l.png
+
+we copy and pasted the code for trap-working and ran it with the flag,
+the answer we got was 
+"OMP defined, threadct = 4
+With 1048576 trapezoids, our estimate of the integral from 
+0.000000 to 3.141593 is 1.487143"
+
+file:///home/pi/running%20trap%20not%20working.png
+
+which it think is wrogn because we were supposed to get 2.0
+
+
+
+so we ran the trap-working.c code and we got the following result
+
+"OMP defined, threadct = 4
+With 1048576 trapezoids, our estimate of the integral from 
+0.000000 to 3.141593 is 2.000000"
+
+whihc gave us 2.0 the correct answer
+
+
+to the next barrier.c programme
+
+running the barrier.c with the line 31 commented out and awe got this out
+
+Thread	1	of	4	is	BEFORE	the	barrier.
+Thread	1	of	4	is	AFTER	the	barrier.
+Thread	2	of	4	is	BEFORE	the	barrier.
+Thread	2	of	4	is	AFTER	the	barrier.
+Thread	3	of	4	is	BEFORE	the	barrier.
+Thread	3	of	4	is	AFTER	the	barrier.
+Thread	0	of	4	is	BEFORE	the	barrier.
+Thread	0	of	4	is	AFTER	the	barrier.
+
+this it with the line 31 uncommented out
+
+
+Thread	1	of	4	is	BEFORE	the	barrier.
+Thread	0	of	4	is	BEFORE	the	barrier.
+Thread	2	of	4	is	BEFORE	the	barrier.
+Thread	3	of	4	is	BEFORE	the	barrier.
+Thread	0	of	4	is	AFTER	the	barrier.
+Thread	1	of	4	is	AFTER	the	barrier.
+Thread	3	of	4	is	AFTER	the	barrier.
+Thread	2	of	4	is	AFTER	the	barrier.
+
+the major difference it that the thread while the line is commented out is the thread 
+is doing the before and the after, and after uncommenting it out, it does all tjhe before and then the after
+
+
+
+file:///home/pi/barrier%20with%20omp%20commented%20out%20and%20uncommented.png
+
+
+now to the exercise:
+
+after running the "gcc masterWorker.c -o masterWorker -fopenmp" while line 24 is commented out
+
+
+we got the following result
+Greetings	from	the	master,	#	0	of	1	threads
+
+
+after uncommenting it we got:
+
+Greetings	from	the	master,	#	0	of	4	threads
+Greetings	from	a	worker,	#	1	of	4	threads
+Greetings	from	a	worker,	#	2	of	4	threads
+Greetings	from	a	worker,	#	3	of	4	threads
+
+
+
+
+
+
+
+file:///home/pi/masterWorker%20ouput%20while%20commented%20and%20while%20unccommented.png
+file:///home/pi/masterwoker%20code%20output.png
